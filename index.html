@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FC Stick Trainer</title>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500;700&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Stick Trainer</h1>
+  <div id="status">ยังไม่พบจอย: ต่อจอยแล้วกดปุ่มใดก็ได้หนึ่งครั้ง (ลองเล่นด้วยคีย์บอร์ด WASD ได้)</div>
+</header>
+<div class="grid">
+  <main>
+    <div class="field">
+      <canvas id="cv" aria-label="สนามฝึก"></canvas>
+      <div id="ov"><div class="big">พร้อมซ้อม</div><p>กดปุ่ม A บนจอย หรือกด Space เพื่อเริ่ม</p></div>
+    </div>
+    <div class="hud">
+      <div class="stat"><span>คะแนน</span><div class="num" id="score">0</div></div>
+      <div class="stat"><span>เวลาที่เหลือ</span><div class="num" id="time">60</div></div>
+      <div class="stat"><span>เฉลี่ยต่อเป้า (วิ)</span><div class="num" id="avg">-</div></div>
+      <div class="stat"><span>สถิติสูงสุด</span><div class="num" id="best">0</div></div>
+      <div class="stat"><span id="errl">พลาด</span><div class="num" id="err">0</div></div>
+    </div>
+  </main>
+  <aside>
+    <div class="card">
+      <h2>ค่าอนาล็อก</h2>
+      <canvas id="sv" width="180" height="180" aria-label="ตำแหน่งอนาล็อก"></canvas>
+      <div class="xy"><div><span>แกน X</span><div class="num" id="vx">0.00</div></div><div><span>แกน Y</span><div class="num" id="vy">0.00</div></div></div>
+      <div class="meta"><span>แรงกด <b id="mag">0</b>%</span><span>ทิศ <b id="ang">-</b></span></div>
+    </div>
+    <div class="card">
+      <h2>โหมดฝึก</h2>
+      <div class="seg" id="modes">
+        <button data-mode="target" aria-pressed="true">แตะเป้า</button>
+        <button data-mode="cone" aria-pressed="false">เลี้ยงผ่านกรวย</button>
+        <button data-mode="pass" aria-pressed="false">ส่งบอล</button>
+        <button data-mode="path" aria-pressed="false">คุมเส้นทาง</button>
+      </div>
+      <p id="desc"></p>
+      <label>ระดับความยาก</label>
+      <div class="seg" id="levels" style="margin-top:6px">
+        <button data-lv="easy" aria-pressed="false">ง่าย</button>
+        <button data-lv="normal" aria-pressed="true">กลาง</button>
+        <button data-lv="hard" aria-pressed="false">ยาก</button>
+      </div>
+      <div id="aimrow" style="margin-top:10px"><button id="aimbtn" aria-pressed="true">เส้นแนวส่งบอล: เปิด</button></div>
+      <label>อนาล็อกที่ใช้</label>
+      <div class="seg" id="sticks" style="margin-top:6px">
+        <button data-stick="0" aria-pressed="true">ซ้าย</button>
+        <button data-stick="1" aria-pressed="false">ขวา</button>
+      </div>
+      <label for="dz">เดดโซน <b id="dzv">12%</b></label>
+      <input id="dz" type="range" min="0" max="40" value="12">
+      <label for="sp">ความเร็วจุด <b id="spv">380</b></label>
+      <input id="sp" type="range" min="200" max="600" step="20" value="380">
+    </div>
+    <button class="go" id="go">เริ่มซ้อม 60 วินาที</button>
+  </aside>
+</div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
